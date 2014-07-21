@@ -1,0 +1,26 @@
+
+This test program is made by Mikhail Golubtsov for Eastwind company, 2014.
+
+
+Your input:
+
+Nothing is found
+
+Your input:
+
+Found items:
+Пицца
+Пицца 20 см.
+Пицца 30 см.
+Пицца 40 см.
+
+Your input:
+
+Found items:
+Пиво
+Пиво бочковое
+Пиво бутылочное
+
+Your input:
+
+bye bye
