@@ -3,6 +3,11 @@ package ru.eastwind.menu;
 import java.io.IOException;
 import java.util.List;
 
+import ru.eastwind.menu.data.MenuCsvFactory;
+import ru.eastwind.menu.model.Menu;
+import ru.eastwind.menu.model.MenuLookup;
+import ru.eastwind.menu.model.RelevanceStrategy;
+
 public class App {
 
     private static final String DATA_FILENAME = "data.csv";
@@ -54,9 +59,10 @@ public class App {
     }
 
     public static App newApp(IOSupport ioSupport) throws IOException {
-        MenuDao menuDao = MenuDao.fromResource(DATA_FILENAME);
+        MenuCsvFactory menuFactory = new MenuCsvFactory();
+        Menu menu = menuFactory.createMenuFromResource(DATA_FILENAME);
         RelevanceStrategy relevanceStrategy = new RelevanceStrategy();
-        MenuLookup menuLookup = new MenuLookup(menuDao, relevanceStrategy);
+        MenuLookup menuLookup = new MenuLookup(menu, relevanceStrategy);
         App app = new App(menuLookup, ioSupport);
         return app;
     }

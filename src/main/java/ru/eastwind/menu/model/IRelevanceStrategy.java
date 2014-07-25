@@ -1,4 +1,4 @@
-package ru.eastwind.menu;
+package ru.eastwind.menu.model;
 
 public interface IRelevanceStrategy {
 

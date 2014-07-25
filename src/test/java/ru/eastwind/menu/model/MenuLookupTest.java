@@ -1,4 +1,4 @@
-package ru.eastwind.menu;
+package ru.eastwind.menu.model;
 
 import java.util.Arrays;
 import java.util.Collection;
@@ -12,6 +12,11 @@ import org.junit.runner.RunWith;
 import org.junit.runners.Parameterized;
 import org.junit.runners.Parameterized.Parameters;
 import org.mockito.Mockito;
+
+import ru.eastwind.menu.model.IRelevanceStrategy;
+import ru.eastwind.menu.model.Menu;
+import ru.eastwind.menu.model.MenuItem;
+import ru.eastwind.menu.model.MenuLookup;
 
 @RunWith(Parameterized.class)
 public class MenuLookupTest {
@@ -31,7 +36,7 @@ public class MenuLookupTest {
             return 0;
         }
     };
-    private MenuDao menuDao;
+    private Menu menu;
     private String testName;
     private String query;
     private List<MenuItem> itemsFromDao;
@@ -46,9 +51,9 @@ public class MenuLookupTest {
 
     @Before
     public void setup() {
-        menuDao = Mockito.mock(MenuDao.class);
-        menuLookup = new MenuLookup(menuDao, relevanceStrategy);
-        Mockito.when(menuDao.getAllItems()).thenReturn(itemsFromDao);
+        menu = Mockito.mock(Menu.class);
+        menuLookup = new MenuLookup(menu, relevanceStrategy);
+        Mockito.when(menu.getItems()).thenReturn(itemsFromDao);
     }
 
     @Test

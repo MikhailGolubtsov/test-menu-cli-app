@@ -1,4 +1,4 @@
-package ru.eastwind.menu;
+package ru.eastwind.menu.model;
 
 import java.util.Arrays;
 import java.util.Collection;
@@ -8,6 +8,9 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.junit.runners.Parameterized;
 import org.junit.runners.Parameterized.Parameters;
+
+import ru.eastwind.menu.model.IRelevanceStrategy;
+import ru.eastwind.menu.model.RelevanceStrategy;
 
 @RunWith(Parameterized.class)
 public class RelevanceStrategyTest {

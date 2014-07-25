@@ -13,6 +13,8 @@ import org.mockito.Mock;
 import org.mockito.Mockito;
 import org.mockito.runners.MockitoJUnitRunner;
 
+import ru.eastwind.menu.model.MenuLookup;
+
 @RunWith(MockitoJUnitRunner.class)
 public class AppTest {
 

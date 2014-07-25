@@ -1,4 +1,4 @@
-package ru.eastwind.menu;
+package ru.eastwind.menu.model;
 
 import java.util.List;
 import java.util.Map;
@@ -10,15 +10,15 @@ import java.util.stream.Stream;
 public class MenuLookup {
 
     private IRelevanceStrategy relevanceStrategy;
-    private MenuDao menuDao;
+    private Menu menu;
 
-    public MenuLookup(MenuDao menuDao, IRelevanceStrategy relevanceStrategy) {
-        this.menuDao = menuDao;
+    public MenuLookup(Menu menu, IRelevanceStrategy relevanceStrategy) {
+        this.menu = menu;
         this.relevanceStrategy = relevanceStrategy;
     }
 
     public List<String> lookupMenuItemsBy(String searchStr, int maxItems) {
-        Stream<String> items = menuDao.getAllItems().stream().map(item -> item.name).distinct();
+        Stream<String> items = menu.getItems().stream().map(item -> item.name).distinct();
         Stream<ItemWithRelevance> itemsWithRelevance = items.map(item -> new ItemWithRelevance(item, relevanceStrategy
                 .getRelevance(item, searchStr)));
         Stream<ItemWithRelevance> relevantItems = itemsWithRelevance.filter((item) -> item.relevance > 0);
