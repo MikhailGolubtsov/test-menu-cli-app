@@ -32,8 +32,11 @@ public class IOSupport implements Closeable {
 
     @Override
     public void close() throws IOException {
-        writer.close();
-        reader.close();
+        try {
+            writer.close();
+        } finally {
+            reader.close();
+        }
     }
 
     public static IOSupport fileIOSupport(String inputFileName, String outputFileName) throws IOException {
