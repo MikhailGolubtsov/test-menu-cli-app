@@ -19,8 +19,10 @@ public class AppFunctionalTest {
     public void test() throws Exception {
         String outputFileName = "programOutput.txt";
 
-        App app = App.newApp(IOSupport.fileIOSupport("userInput.txt", outputFileName));
-        app.run();
+        try (IOSupport fileIOSupport = IOSupport.fileIOSupport("userInput.txt", outputFileName)) {
+            App app = App.newApp(fileIOSupport);
+            app.run();
+        }
 
         try (InputStream ouputIS = new FileInputStream(outputFileName);
                 InputStream expectedIS = getClass().getResourceAsStream("expectedProgramOutput.txt")) {
